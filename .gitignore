@@ -1,0 +1,21 @@
+# Local credentials/configuration
+config.json
+.env
+*.properties.local
+
+# Runtime state, snapshots and logs
+state.json
+snapshots/
+*.log
+logs/
+
+# Compiled output
+out/
+*.class
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
