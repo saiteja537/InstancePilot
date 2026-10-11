@@ -117,6 +117,131 @@ The batch files may contain a local SAP BO Java library path. Update `SAP_LIB` i
 6. Independently verify that replacement reports complete successfully and produce correct output before considering live mode.
 7. Review the source and confirm a recovery plan before enabling any destructive action.
 
+## How to Use InstancePilot
+
+Follow these steps to run InstancePilot in an authorized, non-production SAP BusinessObjects environment.
+
+### Step 1: Download the Project
+
+Clone the repository and open the project directory:
+
+```bash
+git clone https://github.com/saiteja537/InstancePilot.git
+cd InstancePilot
+```
+
+Alternatively, download the repository as a ZIP file from GitHub and extract it.
+
+### Step 2: Configure SAP BusinessObjects Connection
+
+Create your configuration file by copying the example:
+
+```bat
+copy config.example.json config.json
+```
+
+Open `config.json` and update the settings for your non-production SAP BusinessObjects environment.
+
+| Setting | Description |
+|---|---|
+| `cms` | CMS hostname or address and port, for example `cms-test.example.com:6400` |
+| `auth` | Authentication type supported by your implementation |
+| `username` | Authorized test account username |
+| `password` | Password for the test account |
+| `threshold_minutes` | Duration threshold used to identify instances for review |
+| `interval_minutes` | Interval between monitoring cycles |
+| `live_mode` | Keep `false` during initial testing |
+| `max_reruns_per_day` | Maximum configured rerun requests per day |
+| `log_file` | Log file path |
+| `state_file` | Runtime state file path |
+| `snapshot_dir` | Directory for snapshots, if supported by the implementation |
+
+Use values appropriate for your environment. Confirm the configuration options against the current source code before running the application.
+
+### Step 3: Configure the Java SDK Path
+
+Open `build.bat` and `run.bat`.
+
+Update the `SAP_LIB` variable in both files to point to the Java library directory of your SAP BusinessObjects installation.
+
+For example:
+
+```bat
+set "SAP_LIB=C:\SAP BusinessObjects\SAP BusinessObjects Enterprise XI 4.0\java\lib"
+```
+
+Use the actual path on your system. Ensure that a compatible JDK is installed and that both `java` and `javac` are available on your `PATH`.
+
+### Step 4: Build the Application
+
+Run the build script from the project directory:
+
+```bat
+build.bat
+```
+
+If compilation succeeds, the script should display:
+
+```text
+Build OK. Classes in: out\
+```
+
+If the build fails, verify the JDK installation, SAP SDK library path, and availability of the required Java source files.
+
+### Step 5: Start InstancePilot
+
+Run the application:
+
+```bat
+run.bat
+```
+
+Review the startup messages and confirm that the application can connect to the configured SAP BusinessObjects CMS.
+
+Keep the terminal open while monitoring runs. Review any connection errors, authentication failures, warnings, or unexpected lifecycle actions.
+
+### Step 6: Review Monitoring Results
+
+During testing:
+
+1. Observe the report instances being monitored.
+2. Check whether instances exceeding the configured duration threshold are identified correctly.
+3. Review the console output and configured log and state files.
+4. If a rerun is requested, open SAP BusinessObjects Central Management Console (CMC) and inspect the resulting instance.
+5. Verify the replacement instance's final status and report output independently.
+
+A successful rerun request or detection of a replacement instance does not guarantee successful report execution.
+
+### Step 7: Validate Before Enabling Live Mode
+
+Keep `live_mode` set to `false` during initial testing.
+
+Before enabling live or destructive operations:
+
+- Review the source code and understand the instance-selection and deletion logic.
+- Validate the complete workflow using test reports.
+- Confirm that backups and recovery procedures are available.
+- Verify rerun limits and ensure that only intended instances can be affected.
+- Confirm that report outputs are correct after reruns.
+- Obtain the required operational approval.
+
+Only enable live mode after completing these checks. Treat instance deletion as a destructive operation.
+
+### Troubleshooting
+
+| Problem | What to check |
+|---|---|
+| Build fails | JDK installation, `SAP_LIB` path, and Java source files |
+| CMS connection fails | CMS hostname, port, network connectivity, and authentication settings |
+| No instances are detected | Account permissions, instance visibility, and monitoring configuration |
+| Rerun fails | CMS connectivity, report permissions, and console error messages |
+| Replacement instance is not confirmed | Inspect the instance history and final execution status in CMC |
+| Unexpected behavior | Stop the application, preserve relevant logs, and investigate before restarting |
+
+### Operational Reminder
+
+Use InstancePilot only on SAP BusinessObjects systems you are authorized to administer. Test in a non-production environment first, protect credentials, and review all potentially destructive operations before enabling live automation.
+
 ## Logs and Troubleshooting
 
 InstancePilot prints runtime messages to the console when you launch the application using `run.bat`. These messages help you monitor report-instance checks, rerun requests, replacement-instance detection, and lifecycle actions.
