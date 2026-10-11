@@ -133,16 +133,6 @@ For easier troubleshooting, logs should include timestamps, operation names, suc
 
 > **Important:** A successful rerun request or detection of a replacement instance does not guarantee that the report completed successfully or generated correct output. Validate the report status and results in a non-production environment before enabling destructive actions.
 
-## Example Project Structure
-
-
-**Note:** This is an illustrative structure. The `logs/instancepilot.log` file is available only if file logging is implemented. Runtime files, compiled output, real configuration, and sensitive logs should generally remain untracked.
-
-**Note:** The structure above is illustrative. The `logs/instancepilot.log` file will exist only if log-file output is implemented and configured.
-
-Do not commit passwords, session cookies, production host details, real `config.json`, logs, snapshots, or runtime state files. Review `.gitignore` and run `git status` before pushing. Check screenshots for internal hostnames, report names, usernames, or other information that should not be public.
-
-## Important limitation
 
 
 Disclaimer
