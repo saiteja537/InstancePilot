@@ -70,6 +70,30 @@ The batch files may contain a local SAP BO Java library path. Update `SAP_LIB` i
 6. Independently verify that replacement reports complete successfully and produce correct output before considering live mode.
 7. Review the source and confirm a recovery plan before enabling any destructive action.
 
+## Logs and Troubleshooting
+
+InstancePilot prints runtime messages to the console when you launch the application using `run.bat`. These messages help you monitor report-instance checks, rerun requests, replacement-instance detection, and lifecycle actions.
+
+### Where to view logs
+
+- **Live output:** Open the terminal running `run.bat` and review the messages displayed there.
+- **Saved logs:** If your configuration or source code writes logs to files, open the configured log directory and review the relevant log file. The default saved-log path must be confirmed against your implementation.
+- **Troubleshooting:** Check the console output for CMS connection errors, authentication failures, scheduling or rerun errors, and unexpected instance-lifecycle actions.
+
+### Recommended log contents
+
+For easier troubleshooting, logs should include timestamps, operation names, success or failure status, and relevant error messages. Do not log passwords, session cookies, authentication tokens, or other secrets.
+
+> **Important:** A successful rerun request or detection of a replacement instance does not guarantee that the report completed successfully or generated correct output. Validate the report status and results in a non-production environment before enabling destructive actions.
+
+For example, the intended structure could be:
+InstancePilot/
+├── run.bat
+├── logs/
+│   └── instancepilot.log
+├── snapshots/
+├── config.example.json
+└── README.md
 ## Repository hygiene
 
 Do not commit passwords, session cookies, production host details, real `config.json`, logs, snapshots, or runtime state files. Review `.gitignore` and run `git status` before pushing. Check screenshots for internal hostnames, report names, usernames, or other information that should not be public.
@@ -77,7 +101,3 @@ Do not commit passwords, session cookies, production host details, real `config.
 ## Important limitation
 
 A successful rerun request or newly detected child instance is not equivalent to successful report completion or correct report output. Treat automated deletion as destructive. Validate the full workflow in non-production first and keep a way to recover deleted instances where possible.
-
-## License
-
-No license is included. Unless and until you add an appropriate license, others do not automatically receive permission to reuse, modify, or redistribute this code.
