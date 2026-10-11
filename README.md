@@ -167,7 +167,7 @@ Update the `SAP_LIB` variable in both files to point to the Java library directo
 For example:
 
 ```bat
-set "SAP_LIB=C:\SAP BusinessObjects\SAP BusinessObjects Enterprise XI 4.0\java\lib"
+set "SAP_LIB=<SAP BusinessObjects Enterprise XI 4.0\java\lib>"
 ```
 
 Use the actual path on your system. Ensure that a compatible JDK is installed and that both `java` and `javac` are available on your `PATH`.
