@@ -30,6 +30,52 @@ Use this tool only on SAP BusinessObjects systems you are authorized to administ
 
 > These features describe the intended workflow. Verify behavior in your own environment before relying on it.
 
+## Example Console Output
+
+InstancePilot displays color-coded console messages to make monitoring and troubleshooting easier. The exact colors and messages may vary depending on the terminal, implementation, and runtime events.
+
+### Color Legend
+
+| Color | Meaning |
+|---|---|
+| 🟦 Cyan | Application banner and informational details |
+| 🟢 Green | Successful operations or confirmations |
+| 🟡 Yellow | Warnings, thresholds, or actions requiring attention |
+| 🔴 Red | Errors or failed operations |
+| ⚪ White / Gray | General status messages and supplementary details |
+
+*The color meanings above are a suggested convention. They should match the actual console colors implemented in InstancePilot.*
+
+### Illustrative Output
+
+```text
+================================================
+             INSTANCEPILOT
+  SAP BUSINESSOBJECTS AUTOMATION
+================================================
+
+[INFO] Application startup
+[INFO] Connecting to SAP BusinessObjects CMS
+[SUCCESS] CMS connection established
+[INFO] Monitoring report instances
+[WARNING] Instance exceeded configured duration threshold
+[INFO] Rerun request submitted
+[INFO] Checking for a replacement instance
+[SUCCESS] Replacement instance detected
+[INFO] Monitoring cycle completed
+```
+
+**Important:** This output is illustrative, not a verified transcript. A submitted rerun request or detected replacement instance does not guarantee successful report completion. Verify the final instance status and report output in SAP BusinessObjects CMC.
+
+### Reading the Output
+
+- **INFO:** Provides progress and monitoring details.
+- **SUCCESS:** Indicates that the specific operation reported success; verify the actual outcome where necessary.
+- **WARNING:** Highlights a condition that may need attention.
+- **ERROR:** Indicates a failure requiring investigation.
+
+InstancePilot should be tested in a non-production environment before enabling live automation or destructive instance-lifecycle actions.
+
 ## Screenshots
 
 ### SAP BusinessObjects CMC — Running Instances
@@ -97,5 +143,10 @@ For easier troubleshooting, logs should include timestamps, operation names, suc
 Do not commit passwords, session cookies, production host details, real `config.json`, logs, snapshots, or runtime state files. Review `.gitignore` and run `git status` before pushing. Check screenshots for internal hostnames, report names, usernames, or other information that should not be public.
 
 ## Important limitation
+
+
+Disclaimer
+
+InstancePilot is provided as-is, without guarantees. Use it only on SAP BusinessObjects systems you are authorized to administer. Administrators are responsible for reviewing the configuration, validating results, and controlling any destructive operations.
 
 A successful rerun request or newly detected child instance is not equivalent to successful report completion or correct report output. Treat automated deletion as destructive. Validate the full workflow in non-production first and keep a way to recover deleted instances where possible.
