@@ -36,7 +36,8 @@ Use this tool only on SAP BusinessObjects systems you are authorized to administ
 
 Shows report instances visible in SAP BusinessObjects Central Management Console.
 
-<img width="2048" height="1030" alt="cmc-running-instances" src="https://github.com/user-attachments/assets/816a9088-b147-4631-8625-72f4d36dd6a5" />
+<img width="2559" height="1404" alt="image" src="https://github.com/user-attachments/assets/5c4d2e1a-854d-4075-86ab-9e3affb06474" />
+
 
 
 ### Build and Startup
