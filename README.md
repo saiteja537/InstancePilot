@@ -2,7 +2,7 @@
 
 Java-based SAP BusinessObjects report-instance monitoring, rerun verification, and lifecycle automation.
 
-**Developed by:** Saiteja Guddanti  
+**Developed by:** Sai Teja Guddanti  
 **Focus:** BI Automation & Administration
 
 Questions, feedback, or bug reports:
@@ -32,25 +32,26 @@ Use this tool only on SAP BusinessObjects systems you are authorized to administ
 
 ## Screenshots
 
-Screenshots are stored in `docs/screenshots/`. Keep these filenames and paths exactly the same, or update the links below to match the files committed to the repository.
-
 ### SAP BusinessObjects CMC — Running Instances
 
 Shows report instances visible in SAP BusinessObjects Central Management Console.
 
-![SAP BO CMC Running Instances](docs/screenshots/cmc-running-instances.png)
+<img width="2048" height="1030" alt="cmc-running-instances" src="https://github.com/user-attachments/assets/816a9088-b147-4631-8625-72f4d36dd6a5" />
+
 
 ### InstancePilot — Live Automation Output
 
 Example terminal output showing instance detection, rerun requests, replacement-instance identification, cleanup messages, and daily-limit enforcement.
 
-![InstancePilot Automation Output](docs/screenshots/automation-live-output.png)
+<img width="1715" height="1394" alt="automation-live-output" src="https://github.com/user-attachments/assets/4f3766c4-6986-43a7-91fb-dc65e21a14a9" />
+
 
 ### Build and Startup
 
 Shows compilation output, the InstancePilot startup banner, and CMS login output.
 
-![InstancePilot Build and Startup](docs/screenshots/build-and-startup.png)
+<img width="1443" height="1079" alt="build-and-startup" src="https://github.com/user-attachments/assets/996f3974-4927-4746-b41a-40ff1bf8d102" />
+
 
 ## Requirements
 
