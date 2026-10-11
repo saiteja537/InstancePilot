@@ -39,18 +39,17 @@ Shows report instances visible in SAP BusinessObjects Central Management Console
 <img width="2048" height="1030" alt="cmc-running-instances" src="https://github.com/user-attachments/assets/816a9088-b147-4631-8625-72f4d36dd6a5" />
 
 
-### InstancePilot — Live Automation Output
-
-Example terminal output showing instance detection, rerun requests, replacement-instance identification, cleanup messages, and daily-limit enforcement.
-
-<img width="1715" height="1394" alt="automation-live-output" src="https://github.com/user-attachments/assets/4f3766c4-6986-43a7-91fb-dc65e21a14a9" />
-
-
 ### Build and Startup
 
 Shows compilation output, the InstancePilot startup banner, and CMS login output.
 
 <img width="1443" height="1079" alt="build-and-startup" src="https://github.com/user-attachments/assets/996f3974-4927-4746-b41a-40ff1bf8d102" />
+
+### InstancePilot — Live Automation Output
+
+Example terminal output showing instance detection, rerun requests, replacement-instance identification, cleanup messages, and daily-limit enforcement.
+
+<img width="1715" height="1394" alt="automation-live-output" src="https://github.com/user-attachments/assets/4f3766c4-6986-43a7-91fb-dc65e21a14a9" />
 
 
 ## Requirements
