@@ -1,0 +1,13 @@
+{
+  "cms": "YOUR_NON_PROD_CMS_HOST:6400",
+  "auth": "secEnterprise",
+  "username": "YOUR_TEST_ACCOUNT",
+  "password": "",
+  "threshold_minutes": 60.0,
+  "interval_minutes": 5.0,
+  "live_mode": false,
+  "max_reruns_per_day": 2,
+  "log_file": "instancepilot.log",
+  "state_file": "state.json",
+  "snapshot_dir": "snapshots"
+}
